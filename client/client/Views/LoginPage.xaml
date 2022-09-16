@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:viewmodels="clr-namespace:client.ViewModels" xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" x:DataType="viewmodels:LoginViewModel"
+             mc:Ignorable="d"
+             x:Class="client.Views.LoginPage"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="{StaticResource DarkPrimary}"
+                          Offset="0.1" />
+                    <GradientStop Color="{StaticResource LightPrimary}"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="Auto"/>
+                            <RowDefinition  Height="*"/>
+                        </Grid.RowDefinitions>
+                        <forms:AnimationView 
+                            Grid.Row="0"
+                            AnimationSource="AssetOrBundle"
+                            Animation="hello.json"
+                            AutoPlay="True"
+                            RepeatCount="4"
+                            RepeatMode="Restart"
+                            Scale="1"
+                            Speed="1"
+                            MaxFrame="100"
+                            MaxProgress="100"
+                            MinFrame="0"
+                            MinProgress="0"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="150"
+                            />
+                        <Label Text="LOGIN" TextColor="{StaticResource LightPrimary}" Grid.Row="1" Margin="20" FontSize="26" FontAttributes="Bold"/>
+                    </Grid>
+                </StackLayout>
+                <Frame Margin="10" Grid.Row="1" HasShadow="True" BackgroundColor="{StaticResource DarkPrimary}" CornerRadius="5" VerticalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <material:MaterialEntry
+                            Type="Outlined"
+                            LabelText="Email *"
+                            Placeholder="Email"
+                            AssistiveText="{Binding EmailError}"
+                            LabelTextColor="{StaticResource LightPrimary}"
+                            PlaceholderColor="{StaticResource LightPrimary}"
+                            Text="{Binding Email}" 
+                            BorderColor="{StaticResource LightPrimary}"
+                            AnimateError="True"
+                            TabIndex="1"
+                            TextColor="{StaticResource LightPrimary}"
+                            LeadingIcon="mail_icon"
+                             BackgroundColor="Transparent"
+                            ReturnType="Next"
+                            AssistiveTextColor="Red" /> 
+                        <material:MaterialEntry
+                            Type="Outlined"
+                            LabelText="Password *"
+                            Placeholder="Password"
+                            IsPassword="True"
+                            LabelTextColor="{StaticResource LightPrimary}"
+                            TextColor="{StaticResource LightPrimary}"
+                            PlaceholderColor="{StaticResource LightPrimary}"
+                            ShowPasswordIconIsVisible="True"
+                            LeadingIcon="lock_password_icon"
+                            ShowPasswordIcon="True"
+                            Text="{Binding Password}" 
+                            BackgroundColor="Transparent"
+                            BorderColor="{StaticResource LightPrimary}"
+                            AnimateError="True"
+                            
+                            TabIndex="2"
+                            AssistiveText="{Binding PasswordError}"
+                            ReturnType="Done"
+                            AssistiveTextColor="Red" />
+
+
+                        <Label Text="Forgot Password?" Margin="10" TextColor="{StaticResource LightPrimary}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnForgotPassword}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <material:MaterialButton 
+                                Text="Login"  Margin="5" 
+                                Command="{Binding SubmitCommand}" 
+                                Animation="Fade"
+                                BorderColor="{StaticResource Primary}"
+                                IsBusy="{Binding IsBusy}"
+                                />
+                            <material:MaterialButton 
+                                Text="Signup"  
+                                Margin="5" 
+                                HeightRequest="35"
+                                CornerRadius="5" 
+                                Grid.Column="1"
+                                TextColor="Wheat"
+                                Command="{Binding OnSignUpNavigation}"
+                                BackgroundColor="#b83542"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

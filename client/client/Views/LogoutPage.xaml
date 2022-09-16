@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:material1="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="client.Views.LogoutPage"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.Content>
+        <StackLayout >
+            <StackLayout.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="{StaticResource DarkPrimary}"
+                          Offset="0.1" />
+                    <GradientStop Color="{StaticResource LightPrimary}"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical">
+                
+                <material1:MaterialLabel 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="ARE YOU SURE YOU WANT TO LOGOUT"
+                    VerticalOptions="Center"
+                    />
+                <material1:MaterialButton 
+                            BackgroundColor="{StaticResource DarkPrimary}"
+                            x:Name="BtnContinue" Clicked="BtnContinue_Clicked" 
+                            HorizontalOptions="Fill" 
+                            CornerRadius="5"
+                        
+                            Text="LOGOUT"
+                            TextColor="Wheat" 
+                            Margin="10"
+                            VerticalOptions="End" />
+            </StackLayout>
+       </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

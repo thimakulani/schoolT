@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls"
+             x:Class="client.Views.RequstsPage"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image HeightRequest="20" Source="icon_dest" 
+                       WidthRequest="20" 
+                       BackgroundColor="Transparent" 
+                       />
+                <material:MaterialLabel Text="A" />
+                <material:MaterialLabel Text="PICK UP" />
+            </StackLayout>
+            <material:MaterialEntry />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

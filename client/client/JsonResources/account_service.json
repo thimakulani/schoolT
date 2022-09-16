@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "school-transport-fc879",
+  "private_key_id": "42f36be92bf385d6b0fbae89427f6154f5fb42cc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCIPwIaeZ1R2E+j\n9xCUgA5r+TLE92bDtHi1Ze0LQ7EzQy7jp2oy0cu9z2evSLlD5zyO70YyAQZkekVi\nVly3jaCa4WfFdKfm922A0WCeCTmkVfqz2HgdKyWRuq+QBTQXQWb/8CIobamWPuPg\nRReN0UtrFW29+8jUvO1Dux2FFLwFdewPfCLtvYqGek4yL7hx4tqGMFB/9swy1WLB\nQOKTdEDl1ZY+dM798oOe29jeFMnprjojUuudTmki96bTVEtbUKMRRezM0Y8ugfiI\nXlQThqb5GQGEhLHFI3a4Glt0kBjmHZ2/w0L8cQ7JBvddj0BEAy1gb1z484BUBAVc\n4S/wjXwlAgMBAAECggEAIHo2j+WQDwe7ekglc2SwK2RYihO4cyvUv1b34cDF34Sj\nC4Dno4wXn1wuqN2yzgEz0hWu+7H7Wl28JuQTz2xrDahwEmVLtdaiy3t9psZnr2kQ\nbSkLftZ/auTfvzrCT03Xlehh2BXGAGrm6pnFsthifDj8MzavCaksfMIAmC3YYQuB\nS1wFCeCKFFqZZHxoYvGBLE6ZsD+COBSE28jtWbDdCyXVH8oikir7837C7fpL0CvJ\n1CHW+RPAyoHz5W6DDaxrumdn4fdZkeg/+bCymGWqq2Cn5JsYToCSi6S8HK+g5M3s\nh9PCdCEKfEUbIq6dO/ac2BwDMzO9Mem1IL5HVbwd+QKBgQC7S8TS0dX5YH+Y7Ake\nW7ZL65t2yDuKjj3Zo6xIuRFDTmou5FYQ8Gsz/u9Tu0rCFNkouaCl1IfOJou9TOOm\nIy0t4vS15TJNQQnzu3DNnA1/cnUwE7pLtoi0bSBlkDupRpwOQENJtV66bm20HuwQ\nAxUQQfyZTFOU9a6ItH4Z9PkR/QKBgQC6OVkn0tNy3f0jNDwpMyblxuY+gwYf4WIk\n4EfYwZw9CYcNWFZ+K/uQ2mBkmIeC7y04pPX8To37kfS/lKpT1K7OIsp9NfB8mcm9\n+BvI7BHhCodM7pSklnp1qg14EQeAnP9vW/fnnUh4Sx6pYi0wGtl6RUiRMOWCDCjO\ntB8g0HI3SQKBgAvR9FH5vC9Iz8Su4MRxtUeFTwJoEJnl8DFUCwNr6pL81+atsmDP\nS3S0mhYGs+kbt7jCPkk46HkyJY+E0rkhbzB+KkNwe4Q0npQrOCtBtfhdGNg35oHw\nux/n4yuFtr4wHpknpRd5wsixP2smqG86QpIMGAz0rDGyb5lhCrRIqY9hAoGBAKcL\nODkruTapgB8rBOgkFTk6AGCEoWLJhoLzmB8MFPz/ZeCHpBZLl74o1RyHYc8Ggrbz\n6h9ny56lHzkWvu6xshgAR0insM/kF35LZ4kEkUkfa5yLylQVE0Ymwyw3glZQ/iRD\nCA4AHPii0Z85DLXA7+Ho8h4jEUxlYdmA4wdJU5rZAoGBAInWCvJHneX1ZUNgYO20\nBWHoAl8hc+6Th/ScJ6NTZIWSV4U9dy/o/GkIbyObWXK0Am1CBU2bZeVvdndP+E8M\nHJ/dvWgTHz0dk4NZA5vMg5ws9JduHoSY8gx7w8cEMM4D8Jvdd0mOtQBAsstutKJ9\nz8bWD55whcuMld0A61jyTj8e\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-56jex@school-transport-fc879.iam.gserviceaccount.com",
+  "client_id": "110740151238130527668",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-56jex%40school-transport-fc879.iam.gserviceaccount.com"
+}

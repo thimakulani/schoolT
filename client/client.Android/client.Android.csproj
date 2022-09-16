@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB3272EB-3CCD-4D3E-9DCA-CC32B1DC02BA}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6968b3a4-1835-46a3-ac5c-1ae33b475983}</TemplateGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>client.Droid</RootNamespace>
+    <AssemblyName>client.Android</AssemblyName>
+    <Deterministic>True</Deterministic>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
+    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>4.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.CloudFirestore.Fix">
+      <Version>5.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.FirebaseAuth">
+      <Version>4.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.FirebasePushNotification">
+      <Version>3.4.25</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.FirebaseStorage">
+      <Version>4.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.GoogleClient">
+      <Version>2.1.12</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.MaterialDesignControls">
+      <Version>1.11.3</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.88.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Compat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.CommunityToolkit">
+      <Version>2.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Messaging">
+      <Version>123.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Xamarin.Forms.EntryAutoComplete">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.InputKit">
+      <Version>4.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.Visual.Material">
+      <Version>5.0.0.2515</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Auth">
+      <Version>119.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Basement">
+      <Version>118.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Maps">
+      <Version>118.0.2.2</Version>
+    </PackageReference>
+    <PackageReference Include="XF.Material.Outline">
+      <Version>0.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="XForms.Plugin.AnimationNavigationPage">
+      <Version>1.0.8</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="MyFirebaseMessagingService.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\uber_style.json" />
+    <AndroidAsset Include="Assets\hello.json" />
+    <AndroidAsset Include="Assets\loading_bloob.json" />
+    <GoogleServicesJson Include="google-services.json" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
+    <AndroidResource Include="Resources\drawable\icon_about.png" />
+    <AndroidResource Include="Resources\drawable\icon_feed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\client\client.csproj">
+      <Project>{F2CB2DDE-25AF-45B3-B8F6-3C80F6298944}</Project>
+      <Name>client</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_pick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_map_maker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_dest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\icon_dest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\icon_pick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\CarPins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\mail_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\phone_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\identification_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\edit_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\lock_password_icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

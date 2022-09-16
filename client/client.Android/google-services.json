@@ -1,0 +1,84 @@
+{
+  "project_info": {
+    "project_number": "837558225009",
+    "project_id": "school-transport-fc879",
+    "storage_bucket": "school-transport-fc879.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837558225009:android:d6e6ab94ad3ae9e33cb3d0",
+        "android_client_info": {
+          "package_name": "com.companyname.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837558225009-407bq5dt1js7a46f7o5bdb8tvkpjo4bm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.client",
+            "certificate_hash": "4faad0c975542356ddd10cfe6bbbf06a17c135cd"
+          }
+        },
+        {
+          "client_id": "837558225009-96qbhjf2slofkdc9csg1l540dt218iu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxOmzTTdY9ENDYZwA-rNv9_vxztLLofgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837558225009-96qbhjf2slofkdc9csg1l540dt218iu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837558225009:android:0f6353bdf9752f4c3cb3d0",
+        "android_client_info": {
+          "package_name": "com.companyname.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837558225009-pp4a81pl14mvsrv6hk4s2j5vpmpged1n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.driver",
+            "certificate_hash": "4faad0c975542356ddd10cfe6bbbf06a17c135cd"
+          }
+        },
+        {
+          "client_id": "837558225009-96qbhjf2slofkdc9csg1l540dt218iu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxOmzTTdY9ENDYZwA-rNv9_vxztLLofgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837558225009-96qbhjf2slofkdc9csg1l540dt218iu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
