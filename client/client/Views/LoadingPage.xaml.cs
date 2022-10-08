@@ -1,4 +1,5 @@
-﻿using Plugin.FirebaseAuth;
+﻿using BackendlessAPI;
+using Plugin.FirebaseAuth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +22,14 @@ namespace client.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CrossFirebaseAuth.Current.Instance.AuthState += (sender, e) =>
+            if(Backendless.UserService.CurrentUser != null)
             {
-                if (e.Auth.CurrentUser != null)
-                {
-                    App.Current.MainPage = new AppShell();
-                }
-                else
-                {
-                    App.Current.MainPage = new LoginPage();
-                }
-            };
+                App.Current.MainPage = new AppShell();
+            }
+            else
+            {
+                App.Current.MainPage = new LoginPage();
+            }
         }
     }
 }

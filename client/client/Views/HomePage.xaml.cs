@@ -1,4 +1,5 @@
-﻿using client.Models;
+﻿using BackendlessAPI;
+using client.Models;
 using OSRMLib.OSRMServices;
 using Plugin.CloudFirestore;
 using Plugin.CloudFirestore.Reactive;
@@ -35,6 +36,7 @@ namespace client.Views
                 themeFile = reader.ReadToEnd();
                 G_map.MapStyle = MapStyle.FromJson(themeFile);
             }
+
             InitMap();
             GetDrivers();
             LoadSchools();
@@ -42,11 +44,9 @@ namespace client.Views
             Test();
         }
 
-        private async void Test()
+        private void Test()
         {
-            var t = await CrossFirebasePushNotification.Current.GetTokenAsync();
-            Console.WriteLine("Device Token: "+t);
-
+            
         }
 
         private void LoadSchools()
@@ -63,37 +63,7 @@ namespace client.Views
         public ObservableCollection<School> Schools { get { return schools; } }
         private void GetDrivers()
         {
-            CrossCloudFirestore
-                .Current
-                .Instance
-                .Collection("USERS")
-                .WhereEqualsTo("Status", "Online")
-                .AddSnapshotListener((v, e) =>
-                {
-                    if(!v.IsEmpty)
-                    {
-                        foreach(var d in v.DocumentChanges)
-                        {
-                            var dl = d.Document.ToObject<Driver>(); 
-                            switch (d.Type)
-                            {
-                                case DocumentChangeType.Added:
-                                    driverLocations.Add(dl);
-                                    addMapPin(dl);
-                                    break;
-                                case DocumentChangeType.Modified:
-                                    if(dl.Status == "Offline")
-                                    {
-                                        removeMap();
-                                    }
-                                    break;
-                                case DocumentChangeType.Removed:
-                                    break;
-                            }
-                        }
-
-                    }
-                });
+            
         }
 
         private void removeMap()

@@ -1,10 +1,4 @@
-﻿using Plugin.CloudFirestore;
-using Plugin.CloudFirestore.Reactive;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using client.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,14 +11,7 @@ namespace client.Views
         public SignupPage()
         {
             InitializeComponent();
-            CrossCloudFirestore.Current
-               .Instance
-               .Collection("USERS")
-               .ObserveAdded()
-               .Subscribe(document =>
-               {
-                   
-               });
+            BindingContext = new SignUpViewModel();
         }
     }
 }

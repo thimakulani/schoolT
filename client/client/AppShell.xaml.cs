@@ -19,7 +19,7 @@ namespace client
             Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
             Routing.RegisterRoute(nameof(LogoutPage), typeof(LogoutPage));
 
-            CrossFirebasePushNotification.Current.Subscribe(CrossFirebaseAuth.Current.Instance.CurrentUser.Uid);
+            //CrossFirebasePushNotification.Current.Subscribe(CrossFirebaseAuth.Current.Instance.CurrentUser.Uid);
         
         }
 

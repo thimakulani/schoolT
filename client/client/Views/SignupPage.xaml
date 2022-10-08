@@ -1,24 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:client.ViewModels" xmlns:material="clr-namespace:Plugin.MaterialDesignControls;assembly=Plugin.MaterialDesignControls" x:DataType="viewmodels:SignUpViewModel"
              x:Class="client.Views.SignupPage">
     <ContentPage.Content>
         <ScrollView>
+            <ScrollView.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="{StaticResource DarkPrimary}"
+                          Offset="0.1" />
+                    <GradientStop Color="{StaticResource LightPrimary}"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </ScrollView.Background>
+            
             <Frame Margin="10" CornerRadius="5" VerticalOptions="CenterAndExpand">
                 <StackLayout>
                     <Image Source="user" WidthRequest="75" HeightRequest="75"/>
-                    <Entry Placeholder="First Name" Margin="10,5" x:Name="InputFirstName"/>
-                    <Entry Placeholder="Last Name"  Margin="10,5" x:Name="InputLastName"/>
-                    <Entry Placeholder="Phone Number" Keyboard="Email"  Margin="10,5" x:Name="InputPhone" />
-                    <Entry Placeholder="Email"  Margin="10,5" x:Name="InputEmail"/>
-                    <Entry Placeholder="Password"  Margin="10,5" x:Name="InputPassword"/>
+                    <Entry Placeholder="First Name" Margin="10,5" Text="{Binding Name}"/>
+                    <Entry Placeholder="Last Name"  Margin="10,5" Text="{Binding LastName}"/>
+                    <Entry Placeholder="Phone Number" Keyboard="Numeric"  Margin="10,5" Text="{Binding PhoneNumber}" />
+                    <Entry Placeholder="Email" Keyboard="Email" Margin="10,5" Text="{Binding Email}"/>
+                    <Entry IsPassword="True" Placeholder="Password"  Margin="10,5" Text="{Binding Password}"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Button Text="Login"  Margin="10,5" HeightRequest="35" CornerRadius="5" BackgroundColor="#b83542"/>
-                        <Button Text="Submit"  Margin="10,5" CornerRadius="5" HeightRequest="35"  Grid.Column="1" x:Name="BtnSignup"/>
+                        <material:MaterialButton 
+                            Grid.Column="1"
+                                Text="Sign up"  Margin="10,5" 
+                                Command="{Binding OnSignUpCommand}" 
+                                Animation="Fade"
+                                BorderColor="{StaticResource Primary}"
+                                IsBusy="{Binding IsBusy}"
+                                />
                     </Grid>
                 </StackLayout>
             </Frame>

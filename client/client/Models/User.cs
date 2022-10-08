@@ -2,22 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BackendlessAPI;
+using Weborb.Service;
 
 namespace client.Models
 {
     public class User
     {
-        [Id]
-        public string Id { get; set; }
-        [MapTo("Name")]
+ 
+        [SetClientClassMemberName("firstname")]
         public string FirstName { get; set; }
-        [MapTo("Surname")]
+        [SetClientClassMemberName("lastname")]
         public string LastName { get; set; }
-        [MapTo("Phone")]
+        [SetClientClassMemberName("phonenumber")]
         public string PhoneNumber { get; set; }
-        public string Email { get; set; }
+        [SetClientClassMemberName("role")]
         public string Role { get; set; }
-        [MapTo("Url")]
+        [SetClientClassMemberName("imageurl")]
         public string ImageUrl { get; set; } 
     }
 }

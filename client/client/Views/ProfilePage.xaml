@@ -64,14 +64,14 @@
                     <material:MaterialField 
                         LabelText="Email Address" 
                         LabelTextColor="{StaticResource Primary}"
-                        Text="{Binding User.Email}" 
+                         
                         LeadingIcon="mail_icon"
                         FontSize="16"
                         />
                     <material:MaterialField 
                         LabelText="User Id"
                         LabelTextColor="{StaticResource Primary}"
-                        Text="{Binding User.Id}" 
+                        Text="{Binding User.Role}" 
                         LeadingIcon="identification_icon.png"
                         FontSize="16"
                         />

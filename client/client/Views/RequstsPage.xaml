@@ -6,15 +6,50 @@
              >
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Image HeightRequest="20" Source="icon_dest" 
-                       WidthRequest="20" 
-                       BackgroundColor="Transparent" 
-                       />
-                <material:MaterialLabel Text="A" />
-                <material:MaterialLabel Text="PICK UP" />
-            </StackLayout>
-            <material:MaterialEntry />
+            <BoxView HeightRequest="100" BackgroundColor="{StaticResource DarkPrimary}" CornerRadius="0, 0, 30, 30">
+                
+            </BoxView>
+            <CollectionView EmptyView="No Data">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Image HeightRequest="20" Source="icon_dest" 
+                               WidthRequest="20" 
+                               BackgroundColor="Transparent" 
+                            />
+                            <material:MaterialLabel Text="A" />
+                            <material:MaterialLabel Text="PICK UP" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame Margin="5" Padding="2">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image HeightRequest="20" Source="icon_pick" 
+                                           WidthRequest="20" 
+                                           BackgroundColor="Transparent" 
+                                    />
+                                        <material:MaterialLabel Text="A" />
+                                        <material:MaterialLabel Text="PICK UP" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image HeightRequest="20" Source="icon_dest" 
+                                           WidthRequest="20" 
+                                           BackgroundColor="Transparent" 
+                                    />
+                                        <material:MaterialLabel Text="B" />
+                                        <material:MaterialLabel Text="DEST" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+            </CollectionView>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

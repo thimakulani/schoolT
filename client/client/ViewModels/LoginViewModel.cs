@@ -1,4 +1,6 @@
-﻿using client.Views;
+﻿using BackendlessAPI;
+using BackendlessAPI.Exception;
+using client.Views;
 using Google.Apis.Auth.OAuth2.Flows;
 using Plugin.CloudFirestore;
 using Plugin.FirebaseAuth;
@@ -39,6 +41,7 @@ namespace client.ViewModels
             OnSignUpNavigation = new Command(SignUp);
             OnForgotPassword = new Command(ForgotPassword);
             //_googleClientManager = CrossGoogleClient.Current;
+            
         }
         //private readonly IGoogleClientManager _googleClientManager;
         private void ForgotPassword()
@@ -138,7 +141,8 @@ namespace client.ViewModels
             {
                 try
                 {
-
+                    Email = "thimakulani@gmail.com";
+                    Password = "1234567890";
                     if (Email == null)
                     {
                         //await App.Current.MainPage.DisplayAlert("Error", "Enter email", "Ok");
@@ -152,11 +156,13 @@ namespace client.ViewModels
                         return;
                     }
                     IsBusy = true;
-                    var user = await CrossFirebaseAuth.Current
-                        .Instance
-                        .SignInWithEmailAndPasswordAsync(Email, Password);
+                    var user = await Backendless.UserService.LoginAsync(Email, Password, true);
+                    if(user != null)
+                    {
+                        App.Current.MainPage = new AppShell();
+                    }
                 }
-                catch (FirebaseAuthException ex)
+                catch (BackendlessException ex)
                 {
                     await App.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
                 }

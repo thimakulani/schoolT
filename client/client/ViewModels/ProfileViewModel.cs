@@ -1,10 +1,12 @@
-﻿using client.Models;
+﻿using BackendlessAPI;
+using client.Models;
 using Plugin.CloudFirestore;
 using Plugin.FirebaseAuth;
 using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -23,18 +25,25 @@ namespace client.ViewModels
         public ProfileViewModel()
         {
             OnAvatarClicked = new Command(ImagePicker);
-            CrossCloudFirestore
-                .Current
-                .Instance
-                .Collection("USERS")
-                .Document(CrossFirebaseAuth.Current.Instance.CurrentUser.Uid)
-                .AddSnapshotListener((v, e) =>
-                {
-                    if (v.Exists)
-                    {
-                        User = v.ToObject<User>();
-                    }
-                });
+            FetchUserInfo();
+        }
+
+        private async void FetchUserInfo()
+        {
+            var id = Backendless.UserService.LoggedInUserObjectId();
+            if(id != null)
+            {
+                var u = await Backendless.Data.Of<BackendlessUser>().FindByIdAsync(id);
+                var ur = u.GetProperty("User");
+                //if(User.ImageUrl != null)
+                //{
+                //    AvatarText = $"{User.FirstName}";
+                //}
+                //else
+                //{
+                //    AvatarText = user.ImageUrl;
+                //}
+            }
         }
 
         private async void ImagePicker(object obj)
@@ -53,23 +62,11 @@ namespace client.ViewModels
 
             if (file != null)
             {
-                var storage_ref = Plugin.FirebaseStorage.CrossFirebaseStorage
-                     .Current
-                     .Instance
-                     .RootReference
-                     .Child(CrossFirebaseAuth.Current.Instance.CurrentUser.Uid);
-
-                await storage_ref.PutStreamAsync(file.GetStream());
-
-                var url = await storage_ref.GetDownloadUrlAsync();
-
-                //    .PutStreamAsync(file.GetStream());
-                await CrossCloudFirestore
-                    .Current
-                    .Instance
-                    .Collection("USERS")
-                    .Document(CrossFirebaseAuth.Current.Instance.CurrentUser.Uid)
-                    .UpdateAsync("Url", url.ToString());
+                var memoryStream = new MemoryStream();
+                file.GetStream().CopyTo(memoryStream);
+                file.Dispose();
+                var name = new Guid().ToString();
+                Backendless.Files.SaveFile(name, memoryStream.ToArray(), true);
             }
         }
     }
