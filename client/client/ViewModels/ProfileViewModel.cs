@@ -1,5 +1,4 @@
-﻿using BackendlessAPI;
-using client.Models;
+﻿using client.Models;
 using Plugin.CloudFirestore;
 using Plugin.FirebaseAuth;
 using Plugin.Media;
@@ -28,22 +27,9 @@ namespace client.ViewModels
             FetchUserInfo();
         }
 
-        private async void FetchUserInfo()
+        private void FetchUserInfo()
         {
-            var id = Backendless.UserService.LoggedInUserObjectId();
-            if(id != null)
-            {
-                var u = await Backendless.Data.Of<BackendlessUser>().FindByIdAsync(id);
-                var ur = u.GetProperty("User");
-                //if(User.ImageUrl != null)
-                //{
-                //    AvatarText = $"{User.FirstName}";
-                //}
-                //else
-                //{
-                //    AvatarText = user.ImageUrl;
-                //}
-            }
+           
         }
 
         private async void ImagePicker(object obj)
@@ -62,11 +48,7 @@ namespace client.ViewModels
 
             if (file != null)
             {
-                var memoryStream = new MemoryStream();
-                file.GetStream().CopyTo(memoryStream);
-                file.Dispose();
-                var name = new Guid().ToString();
-                Backendless.Files.SaveFile(name, memoryStream.ToArray(), true);
+                
             }
         }
     }

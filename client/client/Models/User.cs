@@ -1,24 +1,16 @@
-﻿using Plugin.CloudFirestore.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using BackendlessAPI;
-using Weborb.Service;
-
-namespace client.Models
+﻿namespace client.Models
 {
     public class User
     {
- 
-        [SetClientClassMemberName("firstname")]
+        public string Id { get; set; }
+        public string Password { get; set; }
         public string FirstName { get; set; }
-        [SetClientClassMemberName("lastname")]
         public string LastName { get; set; }
-        [SetClientClassMemberName("phonenumber")]
-        public string PhoneNumber { get; set; }
-        [SetClientClassMemberName("role")]
-        public string Role { get; set; }
-        [SetClientClassMemberName("imageurl")]
-        public string ImageUrl { get; set; } 
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string AccountStatus { get; set; }
+        public string UserType { get; set; }
+        public object ImageUrl { get; set; }
+        public string OnlineStatus { get; set; }
     }
 }

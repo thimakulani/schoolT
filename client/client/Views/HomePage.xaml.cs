@@ -1,5 +1,4 @@
-﻿using BackendlessAPI;
-using client.Models;
+﻿using client.Models;
 using OSRMLib.OSRMServices;
 using Plugin.CloudFirestore;
 using Plugin.CloudFirestore.Reactive;
@@ -17,6 +16,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 
 namespace client.Views
@@ -36,10 +36,10 @@ namespace client.Views
                 themeFile = reader.ReadToEnd();
                 G_map.MapStyle = MapStyle.FromJson(themeFile);
             }
-
+            
             InitMap();
             GetDrivers();
-            LoadSchools();
+            LoadSchoolsOnMap();
             //CrossFirebaseAuth.Current.Instance.SignOut();
             Test();
         }
@@ -49,18 +49,12 @@ namespace client.Views
             
         }
 
-        private void LoadSchools()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                schools.Add(new School { Id = i.ToString(), Latitude = i, Longitude = i, Name = $"{i} Name" });
-            }
-        }
+    
 
         private ObservableCollection<Driver> driverLocations = new ObservableCollection<Driver>();
         public ObservableCollection<Driver> DriverLocations { get { return driverLocations; } }        
-        private ObservableCollection<School> schools = new ObservableCollection<School>();
-        public ObservableCollection<School> Schools { get { return schools; } }
+        private ObservableCollection<Schools> schools = new ObservableCollection<Schools>();
+        public ObservableCollection<Schools> Schools { get { return schools; } }
         private void GetDrivers()
         {
             
@@ -107,11 +101,7 @@ namespace client.Views
                     LblPickup.Text = $"{await GetAddress(pos)}";
                     P_Location = pos;
                 }
-                if (RdbDest.IsChecked && flag)
-                {
-                    LblDest.Text = $"{await GetAddress(pos)}";
-                    D_Location = pos;
-                }
+                
                
             }
             catch (Exception ex)
@@ -126,6 +116,23 @@ namespace client.Views
             return address?.FirstOrDefault().ToString();
         }
 
+        private void LoadSchoolsOnMap()
+        {
+            Device.InvokeOnMainThreadAsync(() =>
+            {
+                
+            });
+        }
+        private void addMap(Schools dl)
+        {
+            Pin pin = new Pin()
+            {
+                Label = dl.Name,
+                Icon = (Device.RuntimePlatform == Device.Android) ? BitmapDescriptorFactory.FromBundle("school_square_icon.png") : BitmapDescriptorFactory.FromView(new Image() { Source = "CarPins.png", WidthRequest = 30, HeightRequest = 30 }),
+                Position = new Position(dl.Latitude, dl.Longitude),
+            };
+            G_map.Pins.Add(pin);
+        }
         private async void BtnContinue_Clicked(object sender, EventArgs e)
         {
             if(BtnContinue.Text == "Continue".ToUpper())
@@ -217,6 +224,25 @@ namespace client.Views
             request.EstimatedTime = $"{Math.Round(response.Routes[0].Duration / 60)} Minutes";
             BtnContinue.IsBusy = false;
             BtnContinue.Text = "Request".ToUpper();
+        }
+
+        private async void RdbDest_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if(e.Value)
+            {
+                var school = new FindSchoolDlg();
+                school.SelectedSchoolHandler += School_SelectedSchoolHandler;
+                await PopupNavigation.Instance.PushAsync(school, true);
+                //LblDest.Text = $"{await GetAddress(pos)}";
+                //D_Location = pos;
+            }
+        }
+
+        private void School_SelectedSchoolHandler(object sender, FindSchoolDlg.SelectedSchool e)
+        {
+            LblDest.Text = e.School.Name;
+            D_Location.Latitude = e.School.Latitude;
+            D_Location.Longitude = e.School.Longitude;
         }
     }
 }

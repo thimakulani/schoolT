@@ -199,5 +199,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\lock_password_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\school_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\school_square_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

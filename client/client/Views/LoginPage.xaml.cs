@@ -18,14 +18,7 @@ namespace client.Views
         {
             InitializeComponent();
             BindingContext = new LoginViewModel();
-            CrossCloudFirestore.Current
-                   .Instance
-                   .Collection("USERS")
-                   .ObserveAdded()
-                   .Subscribe(document =>
-                   {
-                       Console.WriteLine(document.Document.Id + "weeeeeeeeeeee");
-                   });
+            
         }
     }
 }

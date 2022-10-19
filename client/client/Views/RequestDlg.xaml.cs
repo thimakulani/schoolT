@@ -32,34 +32,25 @@ namespace client.Views
 
         private async void BntReq_Clicked(object sender, EventArgs e)
         {
-            var d = await findNearestDriversAsync();
+            var d = await FindNearestDriversAsync();
             //Console.WriteLine(d.Id);
-            if (!string.IsNullOrEmpty(d.Id))
+            if (!string.IsNullOrEmpty(d))
             {
-                request.UserId = CrossFirebaseAuth.Current.Instance.CurrentUser.Uid;
+                request.UserId = "";
                 request.Status = "Pending";
+                request.DriverId = d;
                 request.RequestTime = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
-                var query = await CrossCloudFirestore
-                                      .Current.Instance
-                                      .Collection("REQUESTS")
-                                      .AddAsync(request);
+                //await Backendless.Data.Of<Request>().SaveAsync(request);
 
-                if (query != null)
-                {
-
-                    Dictionary<string, object> Data = new Dictionary<string, object>();
-                    Data.Add("R_ID", query.Id);
-                    //Data.Add("D_REF", query);
-
-                    await CrossCloudFirestore
-                        .Current
-                        .Instance
-                        .Collection("UPCOMING")
-                        .Document(d.Id)
-                        .SetAsync(Data);
-                    SendPushNotification sendPush = new SendPushNotification();
-                    sendPush.SendMessage(d.Id, "You have a new request", "New Request");
-                }
+                //    await CrossCloudFirestore
+                //        .Current
+                //        .Instance
+                //        .Collection("UPCOMING")
+                //        .Document(d)
+                //        .SetAsync(Data);
+                //    SendPushNotification sendPush = new SendPushNotification();
+                //    sendPush.SendMessage(d, "You have a new request", "New Request");
+                //}
 
             }
             else
@@ -71,39 +62,37 @@ namespace client.Views
 
 
         }
-       private async Task<Driver> findNearestDriversAsync()
-        {
-            Driver driver = new Driver();
-            var q = await CrossCloudFirestore
-                .Current
-                .Instance
-                .Collection("USERS")
-                .WhereEqualsTo("Status", "Online")
-                .WhereEqualsTo("Role", "User")
-                .GetAsync();
-            var position = request.PickupLat;
-            if(!q.IsEmpty)
-            {
-                var drivers = q.ToObjects<Driver>().ToList();
-                if (drivers.Count > 1)
-                {
-                    double heighest = UnitConverters.CoordinatesToKilometers(request.PickupLat, request.PickupLong, drivers[0].Latitude, drivers[0].Longitude);
-                    for (int i = 0; i < drivers.Count; i++)
-                    {
-                        var distance = UnitConverters.CoordinatesToKilometers(request.PickupLat, request.PickupLong, drivers[i].Latitude, drivers[i].Longitude);
+        private DriverLocation d_l = new DriverLocation();
+       private async Task<string> FindNearestDriversAsync()
+       {
+            //var all_users = await Backendless.Data.Of<BackendlessUser>().FindAsync();
+            //var users = all_users.Where(x => (string)x.GetProperty("role") == "Driver").ToList();
 
-                        if (heighest < distance)
-                        {
-                            driver = drivers[i];
-                        }
-                    }
-                }
-                else
-                {
-                    driver = drivers[0];
-                }
-            }
-            return driver;
+            //var d_ = users.Select(x=>x.ObjectId).ToArray();
+
+            //var query = await CrossCloudFirestore
+            //    .Current
+            //    .Instance
+            //    .Collection("LOCATION")
+            //    .WhereIn(FieldPath.DocumentId, d_)
+            //    .GetAsync();
+            //string id = null;
+            //if(!query.IsEmpty)
+            //{
+            //    var Loc = query.ToObjects<DriverLocation>().ToList();
+            //    double heighest = UnitConverters
+            //        .CoordinatesToKilometers(request.PickupLat, request.PickupLong, Loc[0].Latitude, Loc[0].Longitude);
+            //    for (int i = 0; i < Loc.Count; i++)
+            //    {
+            //        var distance = UnitConverters.CoordinatesToKilometers(request.PickupLat, request.PickupLong, Loc[i].Latitude, Loc[i].Longitude);
+
+            //        if (heighest < distance)
+            //        {
+            //            id = Loc[i].Uid;
+            //        }
+            //    }
+            //}
+            return "";
         } 
     }
 }

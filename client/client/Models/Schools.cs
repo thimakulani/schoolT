@@ -1,13 +1,7 @@
-﻿using Plugin.CloudFirestore.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace client.Models
+﻿namespace client.Models
 {
-    public class School
+    public class Schools
     {
-        [Id]
         public string Id { get; set; }
         public string Name { get; set; }
         public double Latitude { get; set; }

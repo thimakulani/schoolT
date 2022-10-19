@@ -6,5 +6,6 @@ namespace client.ViewModels
 {
     public class HomeViewModel
     {
+
     }
 }

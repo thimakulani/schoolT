@@ -8,10 +8,10 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using BackendlessAPI;
-using BackendlessAPI.Exception;
 using System.Reflection;
 using System.Linq;
+using System.Net.Http;
+using client.Views;
 
 namespace client.ViewModels
 {
@@ -32,10 +32,15 @@ namespace client.ViewModels
         public bool IsBusy { get { return isBusy; } set { isBusy = value; PropertyChanged(this, new PropertyChangedEventArgs("IsBusy")); } }
 
         public ICommand OnSignUpCommand { get; set; }
+        public Command OnBackCommand { get; set; }
+
         private void Signup()
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
+                Email = "thimakulani2@gmail.com";
+                Password = "THIma$!305";
+
                 if (Email == null)
                 {
                     await App.Current.MainPage.DisplayAlert("Error", "Enter email", "Got it");
@@ -48,30 +53,41 @@ namespace client.ViewModels
                 }
                 try
                 {
+                    IsBusy = true;
                     User user = new User()
                     {
-                        PhoneNumber = PhoneNumber,
-                        FirstName = Name,
-                        LastName = LastName,
-                        Role = "User",
-                        ImageUrl = null,
-                       
-                    };
-                    var dick = user.GetType()
-                        .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                        .ToDictionary(prop => prop.Name.ToLower(), prop => prop.GetValue(user, null));
-
-                    BackendlessUser _backendlessUser = new BackendlessUser()
-                    {
-                        Properties = dick,
-                        Email = Email,
+                        Phone = "1234567890",
+                        FirstName = "Thima",
+                        LastName = "Sigauque",
+                        UserType = "User",
+                        ImageUrl = "x",
                         Password = Password,
+                        AccountStatus = "active",
+                        Email = Email,
+                        OnlineStatus = "active"
+                        
                     };
-                    
-                    IsBusy = true;
-                    var results = await Backendless.UserService.RegisterAsync(_backendlessUser);
+                    var json = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+                    HttpContent data = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpClient httpClient = new HttpClient();
+                    var results = await httpClient.PostAsync($"https://school-transport--api.herokuapp.com/api/auth/register", data);
+                    if (results.IsSuccessStatusCode)
+                    {
+                        var str = await results.Content.ReadAsStringAsync();
+                        var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AuthResponse>(str);
+                        if(response.Token != null)
+                        {
+                            await App.Current.MainPage.DisplayAlert("Success", "Your account has been successfully created", "Got it");
+                            App.Current.MainPage = new LoginPage();
+                        }
+                    }
+                    else
+                    {
+                        var str_r = await results.Content.ReadAsStringAsync();
+                        await App.Current.MainPage.DisplayAlert("Failed", str_r, "Got It");
+                    }
                 }
-                catch (BackendlessException ex)
+                catch (HttpRequestException ex)
                 {
                     await App.Current.MainPage.DisplayAlert("Error", ex.Message, "Okay");
                 }
@@ -84,8 +100,13 @@ namespace client.ViewModels
         public SignUpViewModel() 
         {
             OnSignUpCommand = new Command(Signup);
+            OnBackCommand = new Command(Login);
         }
 
+        private void Login(object obj)
+        {
+            App.Current.MainPage.Navigation.PopModalAsync();
+        }
     }
 
 }

@@ -73,8 +73,9 @@
                                 Type="Outlined"
                                 BorderColor="LightGray"
                                 ReturnType="Search"
-                                 x:Name="LblDest"/>
-                            <RadioButton Grid.Column="3" GroupName="loc" IsChecked="False" x:Name="RdbDest"  VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+                                IsEnabled="False"
+                                x:Name="LblDest"/>
+                            <RadioButton Grid.Column="3" GroupName="loc" IsChecked="False" x:Name="RdbDest" CheckedChanged="RdbDest_CheckedChanged"  VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
                         </Grid>
                     </StackLayout>
                 </Frame>
