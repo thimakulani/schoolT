@@ -80,7 +80,8 @@ namespace client.ViewModels
                     var json = Newtonsoft.Json.JsonConvert.SerializeObject(userLogin);
                     HttpContent data = new StringContent(json, Encoding.UTF8, "application/json");
                     HttpClient httpClient = new HttpClient();
-                    var results = await httpClient.PostAsync("https://school-transport--api.herokuapp.com/api/auth/login", data);
+                    //var results = await httpClient.PostAsync("https://school-transport--api.herokuapp.com/api/auth/login", data);
+                    var results = await httpClient.PostAsync($"{App.API_URL}/auth/login", data);
                     if (results.IsSuccessStatusCode)
                     {
                         string str_out = await results.Content.ReadAsStringAsync();

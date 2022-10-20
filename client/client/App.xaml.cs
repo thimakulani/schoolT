@@ -9,7 +9,7 @@ namespace client
 {
     public partial class App : Application
     {
-
+        public static string API_URL = "https://school-transport--api.herokuapp.com/api";
         public App()
         {
             InitializeComponent();

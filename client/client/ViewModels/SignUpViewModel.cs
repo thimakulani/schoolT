@@ -56,9 +56,9 @@ namespace client.ViewModels
                     IsBusy = true;
                     User user = new User()
                     {
-                        Phone = "1234567890",
-                        FirstName = "Thima",
-                        LastName = "Sigauque",
+                        PhoneNumber = "1234567890",
+                        Name = "Thima",
+                        Surname = "Sigauque",
                         UserType = "User",
                         ImageUrl = "x",
                         Password = Password,

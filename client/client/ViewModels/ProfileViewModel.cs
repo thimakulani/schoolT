@@ -6,8 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.UI.Views.Options;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace client.ViewModels
@@ -27,9 +31,35 @@ namespace client.ViewModels
             FetchUserInfo();
         }
 
-        private void FetchUserInfo()
+        private async void FetchUserInfo()
         {
-           
+            var id = Preferences.Get("id", null);
+            HttpClient httpClient = new HttpClient();
+            try
+            {
+                var response = await httpClient.GetAsync($"{App.API_URL}/auth/user/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var str_resp = await response.Content.ReadAsStringAsync();
+                    User = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(str_resp);
+                }
+            }
+            catch (HttpRequestException EX)
+            {
+                var messageOptions = new MessageOptions
+                {
+                    Message = EX.Message,
+                    Foreground = Color.Black
+                };
+                var options = new ToastOptions
+                {
+                    MessageOptions = messageOptions,
+                    Duration = TimeSpan.FromMilliseconds(5000),
+                    CornerRadius = new Thickness(10, 20, 30, 40),
+                    BackgroundColor = Color.LightBlue
+                };
+                await App.Current.MainPage.DisplayToastAsync(options);
+            }
         }
 
         private async void ImagePicker(object obj)
